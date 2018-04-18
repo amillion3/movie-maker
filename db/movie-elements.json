@@ -1,0 +1,130 @@
+{
+  "categories": [
+    {
+      "id": "item0",
+      "categoryId": "1",
+      "name": "Will Arnett",
+      "cost": "10000"
+    },
+    {
+      "id": "item1",
+      "categoryId": "1",
+      "name": "Jason Bateman",
+      "cost": "1000"
+    },
+    {
+      "id": "item2",
+      "categoryId": "1",
+      "name": "Michael Cera",
+      "cost": "5000"
+    },
+    {
+      "id": "item3",
+      "categoryId": "1",
+      "name": "David Cross",
+      "cost": "100000"
+    },
+    {
+      "id": "item4",
+      "categoryId": "1",
+      "name": "Portia de Rossi",
+      "cost": "20000"
+    },
+    {
+      "id": "item5",
+      "categoryId": "1",
+      "name": "Tony Hale",
+      "cost": "50"
+    },
+    {
+      "id": "item6",
+      "categoryId": "2",
+      "name": "Tiger",
+      "cost": "500"
+    },
+    {
+      "id": "item7",
+      "categoryId": "2",
+      "name": "Ocelot",
+      "cost": "7500"
+    },
+    {
+      "id": "item8",
+      "categoryId": "2",
+      "name": "Panda",
+      "cost": "50000"
+    },
+    {
+      "id": "item9",
+      "categoryId": "2",
+      "name": "Rabbit",
+      "cost": "100"
+    },
+    {
+      "id": "item10",
+      "categoryId": "2",
+      "name": "Ant",
+      "cost": "5"
+    },
+    {
+      "id": "item11",
+      "categoryId": "3",
+      "name": "Fire",
+      "cost": "50000"
+    },
+    {
+      "id": "item12",
+      "categoryId": "3",
+      "name": "Smoke",
+      "cost": "50"
+    },
+    {
+      "id": "item13",
+      "categoryId": "3",
+      "name": "Space",
+      "cost": "80000"
+    },
+    {
+      "id": "item14",
+      "categoryId": "3",
+      "name": "Explosion",
+      "cost": "10000"
+    },
+    {
+      "id": "item15",
+      "categoryId": "3",
+      "name": "Gun fight",
+      "cost": "100000"
+    },
+    {
+      "id": "item16",
+      "categoryId": "4",
+      "name": "Antioch",
+      "cost": "35"
+    },
+    {
+      "id": "item17",
+      "categoryId": "4",
+      "name": "Florida",
+      "cost": "5400"
+    },
+    {
+      "id": "item18",
+      "categoryId": "4",
+      "name": "Hawaii",
+      "cost": "48000"
+    },
+    {
+      "id": "item19",
+      "categoryId": "4",
+      "name": "California",
+      "cost": "13000"
+    },
+    {
+      "id": "item20",
+      "categoryId": "4",
+      "name": "Mexico",
+      "cost": "5000"
+    }
+  ]
+}
