@@ -28,7 +28,7 @@ const buildDomString = (inputArray) => {
     outputString = `
       <div class="checkbox">
         <label>
-          <input type="checkbox" class ="checkbox-input" value="">
+          <input type="checkbox" class ="checkbox-input" value="" id="${inputArray[i].id}">
           ${inputArray[i].name};
         </label>
       </div>
@@ -38,4 +38,15 @@ const buildDomString = (inputArray) => {
   createCheckboxEventListeners();
 };
 
-module.exports = buildDomString;
+const buildDomStringBudgetBox = movieElement => {
+  const divId = document.getElementById('bb-elements');
+  const domString = `
+    <p>${movieElement.name}: $${movieElement.cost}</p>
+  `;
+  printToDom(domString, divId);
+};
+
+module.exports = {
+  buildDomString,
+  buildDomStringBudgetBox,
+};

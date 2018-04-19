@@ -1,5 +1,5 @@
 const data = require('./data');
-const buildDomString = require('./dom');
+const dom = require('./dom');
 
 const megaSmash = (elements, categories) => {
   elements.forEach((element) => {
@@ -11,7 +11,7 @@ const megaSmash = (elements, categories) => {
   });
   data.setSmashedData(elements);
   console.log(data.returnSmashedData());
-  buildDomString(data.returnSmashedData());
+  dom.buildDomString(data.returnSmashedData());
 };
 
 module.exports = megaSmash;
