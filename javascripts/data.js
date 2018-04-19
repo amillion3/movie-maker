@@ -1,6 +1,7 @@
 let allMovieElements = [];
 let allMovieCategories = [];
 let smashedData = [];
+let budget = 0;
 
 // Movie Elements setter/getter
 const setAllMovieElements = inputElements => {
@@ -30,13 +31,22 @@ const returnSmashedDataSingle = boxId => {
   const smashedDataSingle = smashedData[itemPosition]; // gets the single matching object
   return smashedDataSingle;
 };
+// Budget setter/getter
+const setBudget = budgetFromUser => {
+  budget = budgetFromUser;
+};
+const returnBudget = () => {
+  return budget;
+};
 
 module.exports = {
   setAllMovieElements,
   setAllMovieCategories,
   setSmashedData,
+  setBudget,
   returnAllMovieElements,
   returnAllMovieCategories,
   returnSmashedData,
   returnSmashedDataSingle,
+  returnBudget,
 };

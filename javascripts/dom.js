@@ -1,5 +1,5 @@
 // build DOM strings
-const createCheckboxEventListeners = require('./events');
+const events = require('./events');
 const printToDom = require('./printToDom');
 
 // const printToDom = (domString, domId) => {
@@ -37,7 +37,7 @@ const buildDomString = (inputArray) => {
     `;
     printToDom(outputString, divId);
   }
-  createCheckboxEventListeners();
+  events.createCheckboxEventListeners();
 };
 
 module.exports = {

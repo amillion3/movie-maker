@@ -3,6 +3,7 @@ const xhrCalls = require('./xhr');
 const data = require('./data');
 // returnAllMovieElements, returnAllMovieCategories, setAllMovieElements, setAllMovieCategories
 const megaSmash = require('./megaSmash');
+const events = require('./events');
 
 function successLoadMovieCategories () {
   const allMovieCategories = (JSON.parse(this.responseText).categories); // XHR response
@@ -23,6 +24,7 @@ function failToLoad () {
 }
 const initializer = () => {
   xhrCalls.loadAllMovieElements(successLoadAllMovieElements, failToLoad);
+  events.createSubmitButtonListener();
 };
 
 module.exports = {
