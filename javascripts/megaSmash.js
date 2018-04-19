@@ -10,7 +10,8 @@ const megaSmash = (elements, categories) => {
     });
   });
   data.setSmashedData(elements);
-  buildDomString(data.returnSmashedData);
+  console.log(data.returnSmashedData());
+  buildDomString(data.returnSmashedData());
 };
 
 module.exports = megaSmash;

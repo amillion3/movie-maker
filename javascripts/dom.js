@@ -3,9 +3,16 @@ const printToDom = (domString, domId) => {
 };
 
 const buildDomString = (inputArray) => {
+  // refactor this, use nested .forEach loops
+  const outputHTMLStructure = `
+    <div id="actors"><h2 class="text-center">Actors and Actresses</h2></div>
+    <div id="animals"><h2 class="text-center">Animals and Trainers</h2></div>
+    <div id="effects"><h2 class="text-center">Special Effects</h2></div>
+    <div id="locations"><h2 class="text-center">Locations</h2></div>`;
+  printToDom(outputHTMLStructure, 'checkboxes');
+
   let outputString = '';
   for (let i = 0; i < inputArray.length; i++) {
-    console.log(inputArray[i].name);
     let divId = '';
     if (inputArray[i].categoryName === 'Actors and Actresses') {
       divId = 'actors';
@@ -17,9 +24,9 @@ const buildDomString = (inputArray) => {
       divId = 'locations';
     }
     outputString = `
-      <div class="checkbox disabled">
+      <div class="checkbox">
         <label>
-          <input type="checkbox" value="" disabled>
+          <input type="checkbox" value="">
           ${inputArray[i].name};
         </label>
       </div>
