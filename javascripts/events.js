@@ -1,11 +1,11 @@
 const data = require('./data');
 const addMovieChecks = require('./checks');
-const dom = require('./dom');
+const buildBudgetDomString = require('./domBudgetBox');
 
 const checkboxClicked = e => {
   const boxId = e.target.id;
   const movieElement = data.returnSmashedDataSingle(boxId);
-  dom.buildDomStringBudgetBox(movieElement);
+  buildBudgetDomString(movieElement);
   addMovieChecks(boxId);
 };
 

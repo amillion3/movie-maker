@@ -1,8 +1,9 @@
 const createCheckboxEventListeners = require('./events');
+const printToDom = require('./printToDom');
 
-const printToDom = (domString, domId) => {
-  document.getElementById(domId).innerHTML += domString;
-};
+// const printToDom = (domString, domId) => {
+//   document.getElementById(domId).innerHTML += domString;
+// };
 
 const buildDomString = (inputArray) => {
   // refactor this, use nested .forEach loops
@@ -33,20 +34,11 @@ const buildDomString = (inputArray) => {
         </label>
       </div>
     `;
-    printToDom(outputString, divId); // printToDom needs to be a += setup
+    printToDom(outputString, divId);
   }
   createCheckboxEventListeners();
 };
 
-const buildDomStringBudgetBox = movieElement => {
-  const divId = document.getElementById('bb-elements');
-  const domString = `
-    <p>${movieElement.name}: $${movieElement.cost}</p>
-  `;
-  printToDom(domString, divId);
-};
-
 module.exports = {
   buildDomString,
-  buildDomStringBudgetBox,
 };
