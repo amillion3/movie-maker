@@ -8,7 +8,6 @@ const checkboxClicked = e => {
   buildBudgetDomString(movieElement);
   addMovieChecks(boxId);
 };
-
 const createCheckboxEventListeners = () => {
   const checkBoxes = document.getElementsByClassName('checkbox-input');
   console.log(checkBoxes);
@@ -17,4 +16,19 @@ const createCheckboxEventListeners = () => {
   }
 };
 
-module.exports = createCheckboxEventListeners;
+const submitButtonClicked = e => {
+  const inputValue = (document.getElementById('input-submit').value) * 1;
+  data.setBudget(inputValue);
+  if (typeof(inputValue) === 'number' && inputValue > 0) {
+    console.log(data.returnBudget());
+  }
+};
+const createSubmitButtonListener = () => {
+  const submitButtonId = document.getElementById('btn-submit');
+  submitButtonId.addEventListener('click', submitButtonClicked);
+};
+
+module.exports = {
+  createCheckboxEventListeners,
+  createSubmitButtonListener,
+};
