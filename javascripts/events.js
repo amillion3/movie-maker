@@ -1,5 +1,12 @@
+const data = require('./data');
+const addMovieChecks = require('./checks');
+const buildBudgetDomString = require('./domBudgetBox');
+
 const checkboxClicked = e => {
-  console.log(e);
+  const boxId = e.target.id;
+  const movieElement = data.returnSmashedDataSingle(boxId);
+  buildBudgetDomString(movieElement);
+  addMovieChecks(boxId);
 };
 
 const createCheckboxEventListeners = () => {

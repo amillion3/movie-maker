@@ -1,8 +1,10 @@
+// build DOM strings
 const createCheckboxEventListeners = require('./events');
+const printToDom = require('./printToDom');
 
-const printToDom = (domString, domId) => {
-  document.getElementById(domId).innerHTML += domString;
-};
+// const printToDom = (domString, domId) => {
+//   document.getElementById(domId).innerHTML += domString;
+// };
 
 const buildDomString = (inputArray) => {
   // refactor this, use nested .forEach loops
@@ -28,14 +30,16 @@ const buildDomString = (inputArray) => {
     outputString = `
       <div class="checkbox">
         <label>
-          <input type="checkbox" class ="checkbox-input" value="">
+          <input type="checkbox" class ="checkbox-input" value="" id="${inputArray[i].id}">
           ${inputArray[i].name};
         </label>
       </div>
     `;
-    printToDom(outputString, divId); // printToDom needs to be a += setup
+    printToDom(outputString, divId);
   }
   createCheckboxEventListeners();
 };
 
-module.exports = buildDomString;
+module.exports = {
+  buildDomString,
+};

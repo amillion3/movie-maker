@@ -8,7 +8,6 @@ function successLoadMovieCategories () {
   const allMovieCategories = (JSON.parse(this.responseText).categories); // XHR response
   data.setAllMovieCategories(allMovieCategories); // set movie categories data
   megaSmash(data.returnAllMovieElements(), data.returnAllMovieCategories()); // now call megaSmash...
-  // here we are
 }
 
 function successLoadAllMovieElements () {

@@ -23,6 +23,13 @@ const setSmashedData = inputSmashed => {
 const returnSmashedData = () => {
   return smashedData;
 };
+const returnSmashedDataSingle = boxId => {
+  const itemPosition = smashedData.map(function (data) {
+    return data.id; // just an array of ids
+  }).indexOf(boxId); // indexOf matches the checked box's id
+  const smashedDataSingle = smashedData[itemPosition]; // gets the single matching object
+  return smashedDataSingle;
+};
 
 module.exports = {
   setAllMovieElements,
@@ -31,4 +38,5 @@ module.exports = {
   returnAllMovieElements,
   returnAllMovieCategories,
   returnSmashedData,
+  returnSmashedDataSingle,
 };
