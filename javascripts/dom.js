@@ -1,3 +1,4 @@
+// build DOM strings
 const createCheckboxEventListeners = require('./events');
 const printToDom = require('./printToDom');
 

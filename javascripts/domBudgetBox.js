@@ -1,3 +1,4 @@
+// build string for budget box divs
 const printToDom = require('./printToDom');
 
 const buildBudgetDomString = (movieElement) => {
