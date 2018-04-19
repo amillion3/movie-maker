@@ -1,3 +1,5 @@
+const createCheckboxEventListeners = require('./events');
+
 const printToDom = (domString, domId) => {
   document.getElementById(domId).innerHTML += domString;
 };
@@ -26,13 +28,14 @@ const buildDomString = (inputArray) => {
     outputString = `
       <div class="checkbox">
         <label>
-          <input type="checkbox" value="">
+          <input type="checkbox" class ="checkbox-input" value="">
           ${inputArray[i].name};
         </label>
       </div>
     `;
     printToDom(outputString, divId); // printToDom needs to be a += setup
   }
+  createCheckboxEventListeners();
 };
 
 module.exports = buildDomString;
