@@ -2,6 +2,7 @@ let allMovieElements = [];
 let allMovieCategories = [];
 let smashedData = [];
 let budget = 0;
+let progressBar = 0;
 
 // Movie Elements setter/getter
 const setAllMovieElements = inputElements => {
@@ -38,15 +39,24 @@ const setBudget = budgetFromUser => {
 const returnBudget = () => {
   return budget;
 };
+// Progress bar setter/getter
+const setProgressBar = () => {
+  progressBar += 25;
+};
+const returnProgressBar = () => {
+  return progressBar;
+};
 
 module.exports = {
   setAllMovieElements,
   setAllMovieCategories,
   setSmashedData,
   setBudget,
+  setProgressBar,
   returnAllMovieElements,
   returnAllMovieCategories,
   returnSmashedData,
   returnSmashedDataSingle,
   returnBudget,
+  returnProgressBar,
 };

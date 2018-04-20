@@ -28,7 +28,29 @@ const createSubmitButtonListener = () => {
   submitButtonId.addEventListener('click', submitButtonClicked);
 };
 
+const updateProgressBar = () => {
+  const progressBarElement = document.getElementById('progress-bar');
+  const currentProgressBar = data.returnProgressBar();
+  if (currentProgressBar === 25) {
+    progressBarElement.classList.add('first');
+  } else if (currentProgressBar === 50) {
+    progressBarElement.classList.remove('first');
+    progressBarElement.classList.add('second');
+  } else if (currentProgressBar === 75) {
+    progressBarElement.classList.remove('second');
+    progressBarElement.classList.add('third');
+  } else {
+    progressBarElement.classList.remove('third');
+    progressBarElement.classList.add('fourth');
+  }
+};
+const plusProgressBar = () => {
+  data.setProgressBar();
+  updateProgressBar();
+};
+
 module.exports = {
   createCheckboxEventListeners,
   createSubmitButtonListener,
+  plusProgressBar,
 };
