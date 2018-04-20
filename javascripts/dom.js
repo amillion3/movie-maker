@@ -38,6 +38,7 @@ const buildDomString = (inputArray) => {
     printToDom(outputString, divId);
   }
   events.createCheckboxEventListeners();
+  events.disableAllCheckBoxes();
 };
 
 module.exports = {

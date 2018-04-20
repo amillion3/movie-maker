@@ -3,6 +3,12 @@ const addMovieChecks = require('./checks');
 const buildBudgetDomString = require('./domBudgetBox');
 
 // CHECKBOX functionality
+const disableAllCheckBoxes = () => {
+  const checkBoxes = document.getElementsByClassName('checkbox-input');
+  for (let i = 0; i < checkBoxes.length; i++) {
+    checkBoxes[i].disabled = true;
+  }
+};
 const disableCheckBox = e => {
   e.target.removeEventListener('click', checkboxClicked);
   e.target.disabled = true;
@@ -17,7 +23,6 @@ const checkboxClicked = e => {
 };
 const createCheckboxEventListeners = () => {
   const checkBoxes = document.getElementsByClassName('checkbox-input');
-  console.log(checkBoxes);
   for (let i = 0; i < checkBoxes.length; i++) {
     checkBoxes[i].addEventListener('click', checkboxClicked);
   }
@@ -59,6 +64,7 @@ const plusProgressBar = () => {
 };
 
 module.exports = {
+  disableAllCheckBoxes,
   createCheckboxEventListeners,
   createSubmitButtonListener,
   plusProgressBar,
