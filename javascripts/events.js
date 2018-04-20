@@ -3,6 +3,12 @@ const addMovieChecks = require('./checks');
 const buildBudgetDomString = require('./domBudgetBox');
 
 // CHECKBOX functionality
+const enableAllCheckBoxes = () => {
+  const checkBoxes = document.getElementsByClassName('checkbox-input');
+  for (let i = 0; i < checkBoxes.length; i++) {
+    checkBoxes[i].disabled = false;
+  }
+};
 const disableAllCheckBoxes = () => {
   const checkBoxes = document.getElementsByClassName('checkbox-input');
   for (let i = 0; i < checkBoxes.length; i++) {
@@ -18,7 +24,6 @@ const checkboxClicked = e => {
   const movieElement = data.returnSmashedDataSingle(boxId);
   buildBudgetDomString(movieElement);
   addMovieChecks(boxId);
-  // finally, remove event listener + disable checkbox
   disableCheckBox(e);
 };
 const createCheckboxEventListeners = () => {
@@ -33,6 +38,7 @@ const submitButtonClicked = e => {
   const inputValue = (document.getElementById('input-submit').value) * 1;
   data.setBudget(inputValue);
   if (typeof(inputValue) === 'number' && inputValue > 0) {
+    enableAllCheckBoxes();
     console.log(data.returnBudget());
   }
 };
