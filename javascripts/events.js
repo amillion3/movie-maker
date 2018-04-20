@@ -2,11 +2,18 @@ const data = require('./data');
 const addMovieChecks = require('./checks');
 const buildBudgetDomString = require('./domBudgetBox');
 
+// CHECKBOX functionality
+const disableCheckBox = e => {
+  e.target.removeEventListener('click', checkboxClicked);
+  e.target.disabled = true;
+};
 const checkboxClicked = e => {
   const boxId = e.target.id;
   const movieElement = data.returnSmashedDataSingle(boxId);
   buildBudgetDomString(movieElement);
   addMovieChecks(boxId);
+  // finally, remove event listener + disable checkbox
+  disableCheckBox(e);
 };
 const createCheckboxEventListeners = () => {
   const checkBoxes = document.getElementsByClassName('checkbox-input');
@@ -16,6 +23,7 @@ const createCheckboxEventListeners = () => {
   }
 };
 
+// SUBMIT BUTTON functionality
 const submitButtonClicked = e => {
   const inputValue = (document.getElementById('input-submit').value) * 1;
   data.setBudget(inputValue);
@@ -28,6 +36,7 @@ const createSubmitButtonListener = () => {
   submitButtonId.addEventListener('click', submitButtonClicked);
 };
 
+// PROGRESS BAR functionality
 const updateProgressBar = () => {
   const progressBarElement = document.getElementById('progress-bar');
   const currentProgressBar = data.returnProgressBar();
