@@ -23,7 +23,7 @@ const checkboxClicked = e => {
   const boxId = e.target.id;
   const movieElement = data.returnSmashedDataSingle(boxId);
   buildBudgetDomString(movieElement);
-  addMovieChecks(boxId);
+  addMovieChecks(movieElement);
   disableCheckBox(e);
 };
 const createCheckboxEventListeners = () => {
@@ -39,7 +39,6 @@ const submitButtonClicked = e => {
   data.setBudget(inputValue);
   if (typeof(inputValue) === 'number' && inputValue > 0) {
     enableAllCheckBoxes();
-    console.log(data.returnBudget());
   }
 };
 const createSubmitButtonListener = () => {

@@ -30,6 +30,9 @@ const returnSmashedDataSingle = boxId => {
 const setBudget = budgetFromUser => {
   budget = budgetFromUser;
 };
+const updateBudget = input => {
+  budget -= input;
+};
 const returnBudget = () => budget;
 // Progress bar setter/getter
 const setProgressBar = () => {
@@ -49,4 +52,5 @@ module.exports = {
   returnSmashedDataSingle,
   returnBudget,
   returnProgressBar,
+  updateBudget,
 };

@@ -1,10 +1,6 @@
 // build DOM strings
 const events = require('./events');
-const printToDom = require('./printToDom');
-
-// const printToDom = (domString, domId) => {
-//   document.getElementById(domId).innerHTML += domString;
-// };
+const print = require('./printToDom');
 
 const buildDomString = (inputArray) => {
   // refactor this, use nested .forEach loops
@@ -13,7 +9,7 @@ const buildDomString = (inputArray) => {
     <div id="animals"><h2 class="text-center">Animals and Trainers</h2></div>
     <div id="effects"><h2 class="text-center">Special Effects</h2></div>
     <div id="locations"><h2 class="text-center">Locations</h2></div>`;
-  printToDom(outputHTMLStructure, 'checkboxes');
+  print.printToDom(outputHTMLStructure, 'checkboxes');
 
   let outputString = '';
   for (let i = 0; i < inputArray.length; i++) {
@@ -35,7 +31,7 @@ const buildDomString = (inputArray) => {
         </label>
       </div>
     `;
-    printToDom(outputString, divId);
+    print.printToDom(outputString, divId);
   }
   events.createCheckboxEventListeners();
   events.disableAllCheckBoxes();
