@@ -23,7 +23,7 @@ const checkboxClicked = e => {
   const boxId = e.target.id;
   const movieElement = data.returnSmashedDataSingle(boxId);
   buildBudgetDomString(movieElement);
-  addMovieChecks(boxId);
+  addMovieChecks(movieElement);
   disableCheckBox(e);
 };
 const createCheckboxEventListeners = () => {
@@ -34,12 +34,17 @@ const createCheckboxEventListeners = () => {
 };
 
 // SUBMIT BUTTON functionality
+const executeWhenSubmitted = () => {
+  document.getElementById('btn-submit').disabled = true;
+  document.getElementById('bb-budget').innerHTML = `<h3>${data.returnBudget()}</h3>`;
+};
+
 const submitButtonClicked = e => {
   const inputValue = (document.getElementById('input-submit').value) * 1;
   data.setBudget(inputValue);
   if (typeof(inputValue) === 'number' && inputValue > 0) {
+    executeWhenSubmitted();
     enableAllCheckBoxes();
-    console.log(data.returnBudget());
   }
 };
 const createSubmitButtonListener = () => {
@@ -47,31 +52,8 @@ const createSubmitButtonListener = () => {
   submitButtonId.addEventListener('click', submitButtonClicked);
 };
 
-// PROGRESS BAR functionality
-const updateProgressBar = () => {
-  const progressBarElement = document.getElementById('progress-bar');
-  const currentProgressBar = data.returnProgressBar();
-  if (currentProgressBar === 25) {
-    progressBarElement.classList.add('first');
-  } else if (currentProgressBar === 50) {
-    progressBarElement.classList.remove('first');
-    progressBarElement.classList.add('second');
-  } else if (currentProgressBar === 75) {
-    progressBarElement.classList.remove('second');
-    progressBarElement.classList.add('third');
-  } else {
-    progressBarElement.classList.remove('third');
-    progressBarElement.classList.add('fourth');
-  }
-};
-const plusProgressBar = () => {
-  data.setProgressBar();
-  updateProgressBar();
-};
-
 module.exports = {
   disableAllCheckBoxes,
   createCheckboxEventListeners,
   createSubmitButtonListener,
-  plusProgressBar,
 };

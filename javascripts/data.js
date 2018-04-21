@@ -34,8 +34,25 @@ const returnBudget = () => budget;
 // Progress bar setter/getter
 const setProgressBar = () => {
   progressBar += 25;
+  updateProgressBar();
 };
 const returnProgressBar = () => progressBar;
+const updateProgressBar = () => {
+  const progressBarElement = document.getElementById('progress-bar');
+  const currentProgressBar = returnProgressBar();
+  if (currentProgressBar === 25) {
+    progressBarElement.classList.add('first');
+  } else if (currentProgressBar === 50) {
+    progressBarElement.classList.remove('first');
+    progressBarElement.classList.add('second');
+  } else if (currentProgressBar === 75) {
+    progressBarElement.classList.remove('second');
+    progressBarElement.classList.add('third');
+  } else {
+    progressBarElement.classList.remove('third');
+    progressBarElement.classList.add('fourth');
+  }
+};
 
 module.exports = {
   setAllMovieElements,
