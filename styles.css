@@ -1,11 +1,13 @@
 body {
   background-color: aliceblue;
 }
-
 div {
   border: .5px solid gray;
 }
 
+h3 {
+  color: green;
+}
 /* Progress bar */
 div .first {
   width: 25%;
@@ -19,3 +21,11 @@ div .third {
 div .fourth {
   width: 100%;
 }
+/* #bb-budget coloring */
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
+
