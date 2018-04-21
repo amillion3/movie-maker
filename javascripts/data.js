@@ -42,6 +42,7 @@ const updateProgressBar = () => {
   const currentProgressBar = returnProgressBar();
   if (currentProgressBar === 25) {
     progressBarElement.classList.add('first');
+    progressBarElement.classList.add('active');
   } else if (currentProgressBar === 50) {
     progressBarElement.classList.remove('first');
     progressBarElement.classList.add('second');

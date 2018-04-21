@@ -1,6 +1,7 @@
 const data = require('./data');
 const addMovieChecks = require('./checks');
 const buildBudgetDomString = require('./domBudgetBox');
+const numberWithCommas = require('./currencyFormatter');
 
 // CHECKBOX functionality
 const enableAllCheckBoxes = () => {
@@ -35,8 +36,9 @@ const createCheckboxEventListeners = () => {
 
 // SUBMIT BUTTON functionality
 const executeWhenSubmitted = () => {
+  const cost = numberWithCommas(data.returnBudget() * 1);
   document.getElementById('btn-submit').disabled = true;
-  document.getElementById('bb-budget').innerHTML = `<h3>${data.returnBudget()}</h3>`;
+  document.getElementById('bb-budget').innerHTML = `<h3>$${cost}</h3>`;
 };
 
 const submitButtonClicked = e => {

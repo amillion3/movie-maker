@@ -1,9 +1,11 @@
 const print = require('./printToDom');
 const data = require('./data');
+const numberWithCommas = require('./currencyFormatter');
 
 let movieElement = {};
 const categoriesUsed = [];
 
+// build + print various DOM strings
 const buildNoMovieYetString = () => {
   if (categoriesUsed.length < 4) {
     const output =
@@ -17,19 +19,21 @@ const buildYesMovieString = () => {
   print.printToDomReplace(output, 'bb-status');
 };
 const buildOverBudgetString = () => {
+  const cost = numberWithCommas(data.returnBudget() * 1);
   const output = `
-  <h3 class='red'>${data.returnBudget()}</h3>`;
+  <h3 class='red'>$${cost}</h3>`;
   print.printToDomReplace(output, 'bb-budget');
 };
+
 const updateCategoriesUsed = () => {
   categoriesUsed.push(movieElement.categoryName);
   data.setProgressBar();
-  console.log('prog bar', data.returnProgressBar());
   if (data.returnProgressBar() === 100) {
     buildYesMovieString();
   }
 };
 
+// check which movie element categories have been used already
 const checkUsedCategories = () => {
   if (categoriesUsed.indexOf(movieElement.categoryName) === -1) {
     updateCategoriesUsed();
@@ -39,27 +43,24 @@ const checkUsedCategories = () => {
   }
 };
 
-const changeBudgetWithNewMovieElement = () => {
-  checkUsedCategories();
-};
-
 const overBudget = () => {
   buildNoMovieYetString();
   buildOverBudgetString();
-  // change budgetRemaining color to red
 };
 
+// is it over or under budget?
 const checkBudgetNumbers = () => {
   const currentBudget = data.returnBudget();
   data.setBudget(currentBudget - movieElement.cost);
-  print.printToDomReplace(`<h3>${data.returnBudget()}</h3>`, 'bb-budget');
+  const cost = numberWithCommas(data.returnBudget() * 1);
+  print.printToDomReplace(`<h3>$${cost}</h3>`, 'bb-budget');
   if ((currentBudget - movieElement.cost) < 0) {
     overBudget();
   } else {
-    changeBudgetWithNewMovieElement();
+    checkUsedCategories();
   }
 };
-
+// begin all the checks after a budget is submitted
 const addMovieChecks = (inputMovieElement) => {
   movieElement = inputMovieElement;
   checkBudgetNumbers();
