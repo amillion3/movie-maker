@@ -5,10 +5,10 @@ const print = require('./printToDom');
 const buildDomString = (inputArray) => {
   // refactor this, use nested .forEach loops
   const outputHTMLStructure = `
-    <div id="actors"><h2 class="text-center">Actors and Actresses</h2></div>
-    <div id="animals"><h2 class="text-center">Animals and Trainers</h2></div>
-    <div id="effects"><h2 class="text-center">Special Effects</h2></div>
-    <div id="locations"><h2 class="text-center">Locations</h2></div>`;
+    <div id="actors"><h2 class="text-center category-title">Actors and Actresses</h2></div>
+    <div id="animals"><h2 class="text-center category-title">Animals and Trainers</h2></div>
+    <div id="effects"><h2 class="text-center category-title">Special Effects</h2></div>
+    <div id="locations"><h2 class="text-center category-title">Locations</h2></div>`;
   print.printToDom(outputHTMLStructure, 'checkboxes');
 
   let outputString = '';
