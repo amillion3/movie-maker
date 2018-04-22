@@ -2,11 +2,13 @@
 font-family: 'Raleway', sans-serif; */
 
 body {
-  background-image: url("/img/jake-hills-194864-unsplash.jpg");
+  background-image: url("/img/maria-badasian-582475-unsplash.jpg");
+  /* Maria Badasian https://unsplash.com/photos/LDNGscmNxYA */
   height: 100%;
-  background-position: center;
+  background-position: center-top;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 .container-fluid {
   background-color: lightgrey;
@@ -23,10 +25,10 @@ div {
 }
 .container-fluid {
   width: 70%;
-  border-top: 5px solid white;
-  border-right: 7px solid white;
-  border-bottom: 5px solid white;
-  border-left: 7px solid white;
+  border-top: 12px solid white;
+  border-right: 10px solid white;
+  border-bottom: 12px solid white;
+  border-left: 10px solid white;
 }
 h1, h2, h3 {
   font-family: 'Comfortaa', cursive;
@@ -69,7 +71,7 @@ div .fourth {
   margin-bottom: 50px;
 }
 #budget-box {
-  margin-top: 20px;
+  margin-top: 45px;
 }
 
 #checkbox {
@@ -78,4 +80,11 @@ div .fourth {
 
 .category-title {
   border-bottom: 1px solid darkgray;
+}
+.budget-title {
+  color: black;
+}
+
+.checkbox-label {
+  padding: 5px 15px 5px 15px;
 }

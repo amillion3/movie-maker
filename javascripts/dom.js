@@ -24,13 +24,19 @@ const buildDomString = (inputArray) => {
       divId = 'locations';
     }
     outputString = `
-      <div class="checkbox">
-        <label>
+        <label class="checkbox-label">
           <input type="checkbox" class ="checkbox-input" value="" id="${inputArray[i].id}">
-          ${inputArray[i].name};
+          ${inputArray[i].name}
         </label>
-      </div>
     `;
+    // outputString = `
+    //   <div class="checkbox">
+    //     <label>
+    //       <input type="checkbox" class ="checkbox-input" value="" id="${inputArray[i].id}">
+    //       ${inputArray[i].name};
+    //     </label>
+    //   </div>
+    // `;
     print.printToDom(outputString, divId);
   }
   events.createCheckboxEventListeners();
