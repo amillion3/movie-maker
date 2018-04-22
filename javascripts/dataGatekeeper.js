@@ -1,7 +1,5 @@
 const xhrCalls = require('./xhr');
-// loadAllMovieElements, loadMovieCategories
 const data = require('./data');
-// returnAllMovieElements, returnAllMovieCategories, setAllMovieElements, setAllMovieCategories
 const megaSmash = require('./megaSmash');
 const events = require('./events');
 
