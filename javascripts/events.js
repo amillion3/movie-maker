@@ -16,16 +16,19 @@ const disableAllCheckBoxes = () => {
     checkBoxes[i].disabled = true;
   }
 };
-const disableCheckBox = e => {
-  e.target.removeEventListener('click', checkboxClicked);
-  e.target.disabled = true;
-};
 const checkboxClicked = e => {
   const boxId = e.target.id;
   const movieElement = data.returnSmashedDataSingle(boxId);
-  buildBudgetDomString(movieElement);
-  addMovieChecks(movieElement);
-  disableCheckBox(e);
+  let checked = false;
+  if (document.getElementById(boxId).checked === true) {
+    checked = true;
+    buildBudgetDomString(movieElement);
+    addMovieChecks(movieElement, checked);
+  } else {  // remove movie elements...
+    checked = false;
+    document.getElementById(movieElement.name).remove();
+    addMovieChecks(movieElement, checked);
+  }
 };
 const createCheckboxEventListeners = () => {
   const checkBoxes = document.getElementsByClassName('checkbox-input');

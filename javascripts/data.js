@@ -32,23 +32,29 @@ const setBudget = budgetFromUser => {
 };
 const returnBudget = () => budget;
 // Progress bar setter/getter
-const setProgressBar = () => {
-  progressBar += 25;
+const setProgressBar = (inputProgress) => {
+  progressBar = inputProgress;
   updateProgressBar();
 };
 const returnProgressBar = () => progressBar;
 const updateProgressBar = () => {
   const progressBarElement = document.getElementById('progress-bar');
   const currentProgressBar = returnProgressBar();
-  if (currentProgressBar === 25) {
+  if (currentProgressBar === 0) {
+    progressBarElement.classList.remove('first');
+    progressBarElement.classList.remove('active');
+  } else if (currentProgressBar === 25) {
     progressBarElement.classList.add('first');
     progressBarElement.classList.add('active');
+    progressBarElement.classList.remove('second');
   } else if (currentProgressBar === 50) {
     progressBarElement.classList.remove('first');
     progressBarElement.classList.add('second');
+    progressBarElement.classList.remove('third');
   } else if (currentProgressBar === 75) {
     progressBarElement.classList.remove('second');
     progressBarElement.classList.add('third');
+    progressBarElement.classList.remove('fourth');
   } else {
     progressBarElement.classList.remove('third');
     progressBarElement.classList.add('fourth');

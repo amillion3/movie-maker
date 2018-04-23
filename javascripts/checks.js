@@ -4,10 +4,12 @@ const numberWithCommas = require('./currencyFormatter');
 
 let movieElement = {};
 const categoriesUsed = [];
+let checked = false;
+let testArray = [];
 
 // build + print various DOM strings
 const buildNoMovieYetString = () => {
-  if (categoriesUsed.length < 4) {
+  if (testArray < 4) {
     const output =
     `<h5 class='red'>You can't make this movie yet.</h5>`;
     print.printToDomReplace(output, 'bb-status');
@@ -25,22 +27,32 @@ const buildOverBudgetString = () => {
   print.printToDomReplace(output, 'bb-budget');
 };
 
-const updateCategoriesUsed = () => {
+const progressBarSet = () => {
+  testArray = [...new Set(categoriesUsed)];
+  if (testArray.length === 0) {
+    data.setProgressBar(0);
+  } else if (testArray.length === 1) {
+    data.setProgressBar(25);
+  } else if (testArray.length === 2) {
+    data.setProgressBar(50);
+  } else if (testArray.length === 3) {
+    data.setProgressBar(75);
+  } else if (testArray.length === 4) {
+    data.setProgressBar(100);
+  }
+};
+
+const addUsedCategories = () => {
   categoriesUsed.push(movieElement.categoryName);
-  data.setProgressBar();
+  progressBarSet();
   if (data.returnProgressBar() === 100) {
     buildYesMovieString();
   }
 };
-
-// check which movie element categories have been used already
-const checkUsedCategories = () => {
-  if (categoriesUsed.indexOf(movieElement.categoryName) === -1) {
-    updateCategoriesUsed();
-    buildNoMovieYetString();
-  } else {
-    buildNoMovieYetString();
-  }
+const removeUsedCategories = () => {
+  categoriesUsed.splice(categoriesUsed.indexOf(movieElement.categoryName), 1);
+  progressBarSet();
+  buildNoMovieYetString();
 };
 
 const overBudget = () => {
@@ -50,19 +62,31 @@ const overBudget = () => {
 
 // is it over or under budget?
 const checkBudgetNumbers = () => {
-  const currentBudget = data.returnBudget();
-  data.setBudget(currentBudget - movieElement.cost);
-  const cost = numberWithCommas(data.returnBudget() * 1);
-  print.printToDomReplace(`<h3>$${cost}</h3>`, 'bb-budget');
-  if ((currentBudget - movieElement.cost) < 0) {
-    overBudget();
+  const currentBudget = data.returnBudget() * 1;
+  if (checked === true) {
+    data.setBudget(currentBudget - movieElement.cost * 1);
+    const cost = numberWithCommas(data.returnBudget() * 1);
+    print.printToDomReplace(`<h3>$${cost}</h3>`, 'bb-budget');
+    if ((currentBudget - movieElement.cost * 1) < 0) {
+      overBudget();
+    } else {
+      addUsedCategories();
+    }
   } else {
-    checkUsedCategories();
+    data.setBudget(currentBudget + movieElement.cost * 1);
+    const cost = numberWithCommas(data.returnBudget() * 1);
+    print.printToDomReplace(`<h3>$${cost}</h3>`, 'bb-budget');
+    if ((currentBudget + movieElement.cost * 1) < 0) {
+      overBudget();
+    } else {
+      removeUsedCategories();
+    }
   }
 };
 // begin all the checks after a budget is submitted
-const addMovieChecks = (inputMovieElement) => {
+const addMovieChecks = (inputMovieElement, inputChecked) => {
   movieElement = inputMovieElement;
+  checked = inputChecked;
   checkBudgetNumbers();
 };
 
