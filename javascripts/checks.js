@@ -9,16 +9,23 @@ let testArray = [];
 
 // build + print various DOM strings
 const buildNoMovieYetString = () => {
-  if (testArray < 4) {
+  if (testArray.length < 4) {
     const output =
     `<h5 class='red'>You can't make this movie yet.</h5>`;
     print.printToDomReplace(output, 'bb-status');
   }
 };
-const buildYesMovieString = () => {
-  const output = `
-  <h5 class='green'>You CAN make this movie!</h5>`;
-  print.printToDomReplace(output, 'bb-status');
+const buildMovieString = () => {
+  console.log('test array length before loop ', testArray.length);
+  if (testArray.length < 4) {
+    const output =
+    `<h5 class='red'>You can't make this movie yet.</h5>`;
+    print.printToDomReplace(output, 'bb-status');
+  } else if (testArray.length === 4) {
+    const output = `
+      <h5 class='green'>You CAN make this movie!</h5>`;
+    print.printToDomReplace(output, 'bb-status');
+  };
 };
 const buildOverBudgetString = () => {
   const cost = numberWithCommas(data.returnBudget() * 1);
@@ -28,7 +35,7 @@ const buildOverBudgetString = () => {
 };
 
 const progressBarSet = () => {
-  testArray = [...new Set(categoriesUsed)];
+  testArray = [...new Set(categoriesUsed),];
   if (testArray.length === 0) {
     data.setProgressBar(0);
   } else if (testArray.length === 1) {
@@ -45,14 +52,12 @@ const progressBarSet = () => {
 const addUsedCategories = () => {
   categoriesUsed.push(movieElement.categoryName);
   progressBarSet();
-  if (data.returnProgressBar() === 100) {
-    buildYesMovieString();
-  }
+  buildMovieString();
 };
 const removeUsedCategories = () => {
   categoriesUsed.splice(categoriesUsed.indexOf(movieElement.categoryName), 1);
   progressBarSet();
-  buildNoMovieYetString();
+  buildMovieString();
 };
 
 const overBudget = () => {
