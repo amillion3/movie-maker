@@ -21,7 +21,7 @@ h3 {
 }
 .container-fluid {
   background-color: lightgrey;
-  height: 100vh;
+  height: 100%;
   width: 70vw;
   border-top: 12px solid white;
   border-right: 10px solid white;
